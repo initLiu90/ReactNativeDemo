@@ -1,3 +1,4 @@
+/* eslint-disable no-eval */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -13,6 +14,7 @@ import {createStore, compose} from 'redux';
 import rootReducer from './reducers';
 import {Provider} from 'react-redux';
 import TodoList from './components/TodoList';
+import {Dynamic} from './dynamic';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers());
@@ -20,6 +22,7 @@ const store = createStore(rootReducer, composeEnhancers());
 export default class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {};
   }
 
   render() {
@@ -28,6 +31,7 @@ export default class App extends Component {
         <AddTodo />
         <Filter />
         <TodoList />
+        <Dynamic />
       </Provider>
     );
   }

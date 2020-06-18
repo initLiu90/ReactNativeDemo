@@ -12,7 +12,6 @@ class AddTodo extends Component {
 
   render() {
     const onclick = this.props.onclick;
-    console.log('addtodo render');
     return (
       <View style={{flexDirection: 'row', margin: 10}}>
         <TextInput
