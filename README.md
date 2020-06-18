@@ -1,3 +1,7 @@
+# ReactNativeDemo
+
+A ToDo List use redux
+
 `dynamic.js`是一个动态功能模块。它从 Android 的 assets 目录下读取 bundle.js，然后通过调用`eval()`方法执行代码。
 
 ```js
