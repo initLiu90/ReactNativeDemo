@@ -31,7 +31,7 @@ export default class App extends Component {
         <AddTodo />
         <Filter />
         <TodoList />
-        <Dynamic />
+        {/* <Dynamic /> */}
       </Provider>
     );
   }

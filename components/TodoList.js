@@ -8,12 +8,8 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import {connect} from 'react-redux';
-import {
-  FILER_TYPE_ALL,
-  FILER_TYPE_COMPLETE,
-  FILER_TYPE_ACTIVE,
-} from '../actions/type';
 import {updateTodo} from '../actions';
+import {todoSelector} from '../selectors';
 
 class TodoList extends Component {
   constructor(props) {
@@ -44,7 +40,7 @@ class TodoList extends Component {
   };
 
   render() {
-    const data = this._filteData();
+    const data = this.props.todos;
     return (
       <FlatList
         data={data}
@@ -53,25 +49,10 @@ class TodoList extends Component {
       />
     );
   }
-
-  _filteData() {
-    const todos = this.props.todos;
-    const filter = this.props.filter;
-    switch (filter) {
-      case FILER_TYPE_ACTIVE:
-        return todos.filter(item => !item.complete);
-      case FILER_TYPE_COMPLETE:
-        return todos.filter(item => item.complete);
-      case FILER_TYPE_ALL:
-        return todos;
-      default:
-        return todos;
-    }
-  }
 }
 
 const mapStateToProps = state => {
-  return {todos: state.todo, filter: state.filter};
+  return {todos: todoSelector(state)};
 };
 
 const mapDispatchToProps = {
