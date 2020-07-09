@@ -6,8 +6,8 @@ import {
   FILER_TYPE_ACTIVE,
 } from '../actions/type';
 
-const getTodos = state => state.todo;
-const getFilter = state => state.filter;
+const getTodos = state => state.todo.todos;
+const getFilter = state => state.todo.filter;
 
 export const todoSelector = createSelector(
   [getTodos, getFilter],

@@ -1,4 +1,3 @@
-/* eslint-disable no-eval */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -8,16 +7,18 @@
  */
 
 import React, {Component} from 'react';
-import AddTodo from './components/AddTodo';
-import Filter from './components/Filter';
-import {createStore, compose} from 'redux';
+import {createStore, compose, applyMiddleware} from 'redux';
 import rootReducer from './reducers';
 import {Provider} from 'react-redux';
-import TodoList from './components/TodoList';
-import {Dynamic} from './dynamic';
+import thunk from 'redux-thunk';
+import {NavigationContainer} from '@react-navigation/native';
+import {RootStack} from './router';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers());
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk)),
+);
 
 export default class App extends Component {
   constructor(props) {
@@ -28,10 +29,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <AddTodo />
-        <Filter />
-        <TodoList />
-        {/* <Dynamic /> */}
+        <NavigationContainer>{RootStack()}</NavigationContainer>
       </Provider>
     );
   }

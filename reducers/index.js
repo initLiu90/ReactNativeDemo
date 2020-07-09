@@ -1,5 +1,5 @@
 import todo from './todo';
-import filter from './filter';
+import wan from './wan';
 import {combineReducers} from 'redux';
 
-export default combineReducers({todo, filter});
+export default combineReducers({todo, wan});

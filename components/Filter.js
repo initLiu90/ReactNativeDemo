@@ -6,7 +6,7 @@ import {
   FILER_TYPE_ALL,
   FILER_TYPE_ACTIVE,
 } from '../actions/type';
-import {setFilter} from '../actions';
+import {setFilter} from '../actions/todo';
 
 class Filter extends Component {
   render() {

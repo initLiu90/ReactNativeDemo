@@ -8,7 +8,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import {connect} from 'react-redux';
-import {updateTodo} from '../actions';
+import {updateTodo} from '../actions/todo';
 import {todoSelector} from '../selectors';
 
 class TodoList extends Component {
