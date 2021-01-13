@@ -9,7 +9,10 @@
 import React, {Component} from 'react';
 import {applyMiddleware, compose, createStore} from 'redux';
 import rootReducer from './reducers';
+import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
+import {NavigationContainer} from '@react-navigation/native';
+import {RootStack} from './router';
 import createSagaMiddleware from 'redux-saga';
 import {main} from './sagas';
 
@@ -25,16 +28,16 @@ const store = createStore(
 sagaMiddleware.run(main);
 
 export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
 
-  render() {
-    return (
-        <Provider store={store}>
-            <NavigationContainer>{RootStack()}</NavigationContainer>
-        </Provider>
-    );
-  }
+    render() {
+        return (
+            <Provider store={store}>
+                <NavigationContainer>{RootStack()}</NavigationContainer>
+            </Provider>
+        );
+    }
 }
