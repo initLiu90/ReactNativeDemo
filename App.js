@@ -7,18 +7,22 @@
  */
 
 import React, {Component} from 'react';
-import {createStore, compose, applyMiddleware} from 'redux';
+import {applyMiddleware, compose, createStore} from 'redux';
 import rootReducer from './reducers';
-import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-import {NavigationContainer} from '@react-navigation/native';
-import {RootStack} from './router';
+import createSagaMiddleware from 'redux-saga';
+import {main} from './sagas';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const sagaMiddleware = createSagaMiddleware();
+
 const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk)),
+    rootReducer,
+    composeEnhancers(applyMiddleware(thunk, sagaMiddleware)),
 );
+
+sagaMiddleware.run(main);
 
 export default class App extends Component {
   constructor(props) {
@@ -28,9 +32,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <Provider store={store}>
-        <NavigationContainer>{RootStack()}</NavigationContainer>
-      </Provider>
+
     );
   }
 }

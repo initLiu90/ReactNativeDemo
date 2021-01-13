@@ -2,12 +2,12 @@
 import React, {Component} from 'react';
 import {FlatList, TouchableHighlight} from 'react-native-gesture-handler';
 import {Text} from 'react-native';
-import {TODO, DYNAMIC, ASYNC} from '../router';
+import {ASYNC, DYNAMIC, SAGA, TODO} from '../router';
 
 export default class HomeScreen extends Component {
   constructor(props) {
-    super(props);
-    this.items = [TODO, DYNAMIC, ASYNC];
+      super(props);
+      this.items = [TODO, DYNAMIC, SAGA, ASYNC, SAGA];
   }
 
   render() {
