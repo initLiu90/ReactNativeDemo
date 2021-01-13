@@ -9,15 +9,15 @@ import SagaScreen from './screens/SagaScreen';
 const Stack = createStackNavigator();
 
 export function RootStack() {
-  return (
-    <Stack.Navigator initialRouteName={HOME}>
-      <Stack.Screen name={HOME} component={HomeScreen} />
-      <Stack.Screen name={TODO} component={TodoScreen} />
-        <Stack.Screen name={DYNAMIC} component={DynamicScreen}/>
-        <Stack.Screen name={SAGA} component={SagaScreen}/>
-        <Stack.Screen name={ASYNC} component={AsyncScreen}/>
-    </Stack.Navigator>
-  );
+    return (
+        <Stack.Navigator initialRouteName={HOME}>
+            <Stack.Screen name={HOME} component={HomeScreen}/>
+            <Stack.Screen name={TODO} component={TodoScreen}/>
+            <Stack.Screen name={DYNAMIC} component={DynamicScreen}/>
+            <Stack.Screen name={SAGA} component={SagaScreen}/>
+            <Stack.Screen name={ASYNC} component={AsyncScreen}/>
+        </Stack.Navigator>
+    );
 }
 
 export const HOME = 'Home';
